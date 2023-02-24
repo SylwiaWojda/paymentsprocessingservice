@@ -3,6 +3,7 @@ package meena.demo.paymentsprocessingservice.XMLValidation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
@@ -20,7 +21,7 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+@Service
 public class XMLValidator {
 
     Logger logger = LoggerFactory.getLogger(this.getClass());

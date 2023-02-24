@@ -1,5 +1,6 @@
 package meena.demo.paymentsprocessingservice.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,13 +16,12 @@ import java.util.Map;
 
 @EnableKafka
 @Configuration
-public class KafkaConfig {
+public class PaymentprocessingserviceConfig {
 
     @Value(value = "${kafka.server_endpoint}")
     private String kafkaServerEndPoint;
 
     private String groupId = "group_id";
-
 
     @Bean
     public ConsumerFactory<String, String> consumerFactory(){
@@ -39,5 +39,9 @@ public class KafkaConfig {
         return factory;
     }
 
+    @Bean
+    public ObjectMapper mapper(){
+        return new ObjectMapper();
+    }
 
 }
