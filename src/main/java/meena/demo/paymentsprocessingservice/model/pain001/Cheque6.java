@@ -305,7 +305,7 @@ public class Cheque6 {
      */
     public List<String> getMemoFld() {
         if (memoFld == null) {
-            memoFld = new ArrayList<String>();
+            memoFld = new ArrayList<>();
         }
         return this.memoFld;
     }

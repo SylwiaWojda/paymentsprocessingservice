@@ -11,10 +11,12 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 import org.mapstruct.factory.Mappers;
+
+import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import java.util.GregorianCalendar;
 import java.util.List;
-
+import java.util.Optional;
 
 @Mapper(imports = {DatatypeFactory.class, GregorianCalendar.class, PaymentInstructionInformation3.class})
 public interface PAIN001ToPACS008Mapper {
@@ -33,7 +35,7 @@ public interface PAIN001ToPACS008Mapper {
             expression = "java(DatatypeFactory.newInstance().newXMLGregorianCalendar(new GregorianCalendar()))")
     @Mapping(target="sttlmInf.sttlmMtd", constant = "CLRG")
     @Mapping(target="instgAgt.finInstnId.BIC", source="pmtInf", qualifiedByName = "deriveBIC")
-    GroupHeader33 mapHdr(CustomerCreditTransferInitiationV03 cstmrCdtTrfInitn) throws Exception;
+    GroupHeader33 mapHdr(CustomerCreditTransferInitiationV03 cstmrCdtTrfInitn) throws DatatypeConfigurationException;
 
     @Mapping(target = "pmtId.endToEndId",
             expression = "java(paymentInstructionInformation3.getCdtTrfTxInf().get(0).getPmtId().getEndToEndId())")
@@ -52,7 +54,14 @@ public interface PAIN001ToPACS008Mapper {
             expression = "java(mapPI32(paymentInstructionInformation3.getCdtTrfTxInf().get(0).getUltmtCdtr()))")
     @Mapping(target = "rmtInf",
             expression = "java(mapRI5(paymentInstructionInformation3.getCdtTrfTxInf().get(0).getRmtInf()))")
-    CreditTransferTransactionInformation11 mapBody(PaymentInstructionInformation3 paymentInstructionInformation3);
+    @Mapping(target = "poolgAdjstmntDt",
+            expression = "java(DatatypeFactory.newInstance().newXMLGregorianCalendar(new GregorianCalendar()))")
+    @Mapping(target = "instdAmt" ,
+            expression = "java(mapAHCA(paymentInstructionInformation3.getCdtTrfTxInf().get(0).getAmt().getInstdAmt()))")
+    @Mapping(target = "xchgRate" , constant = "100.00")
+    @Mapping(target = "chrgBr" ,
+            constant = "SLEV")
+    CreditTransferTransactionInformation11 mapBody(PaymentInstructionInformation3 paymentInstructionInformation3) throws DatatypeConfigurationException;
 
     ActiveCurrencyAndAmount mapACA(ActiveOrHistoricCurrencyAndAmount amt);
 
@@ -64,12 +73,19 @@ public interface PAIN001ToPACS008Mapper {
 
     RemittanceInformation5 mapRI5(meena.demo.paymentsprocessingservice.model.pain001.RemittanceInformation5 remittanceInformation5);
 
+    meena.demo.paymentsprocessingservice.model.pacs008.ActiveOrHistoricCurrencyAndAmount mapAHCA(ActiveOrHistoricCurrencyAndAmount amt);
+
     @Named("deriveBIC")
     default String deriveBIC(List<PaymentInstructionInformation3> pmtInfLst){
-        return pmtInfLst
+        Optional<PaymentInstructionInformation3> pmtInstrInf3IsPresent =  pmtInfLst
                 .stream()
-                .filter(pmtInf -> pmtInf.getDbtrAgt() != null)
-                .findFirst().get().getDbtrAgt().getFinInstnId().getBIC();
+                .filter(pmtInf -> pmtInf.getDbtrAgt() != null).
+                findFirst();
+        if(pmtInstrInf3IsPresent.isPresent()){
+            return pmtInstrInf3IsPresent.get().getDbtrAgt().getFinInstnId().getBIC();
+
+        }
+        return "";
     }
 }
 

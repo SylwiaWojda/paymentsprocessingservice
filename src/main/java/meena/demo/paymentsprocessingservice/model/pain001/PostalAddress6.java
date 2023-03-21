@@ -322,7 +322,7 @@ public class PostalAddress6 {
      */
     public List<String> getAdrLine() {
         if (adrLine == null) {
-            adrLine = new ArrayList<String>();
+            adrLine = new ArrayList<>();
         }
         return this.adrLine;
     }

@@ -598,7 +598,7 @@ public class CreditTransferTransactionInformation10 {
      */
     public List<InstructionForCreditorAgent1> getInstrForCdtrAgt() {
         if (instrForCdtrAgt == null) {
-            instrForCdtrAgt = new ArrayList<InstructionForCreditorAgent1>();
+            instrForCdtrAgt = new ArrayList<>();
         }
         return this.instrForCdtrAgt;
     }
@@ -675,7 +675,7 @@ public class CreditTransferTransactionInformation10 {
      */
     public List<RegulatoryReporting3> getRgltryRptg() {
         if (rgltryRptg == null) {
-            rgltryRptg = new ArrayList<RegulatoryReporting3>();
+            rgltryRptg = new ArrayList<>();
         }
         return this.rgltryRptg;
     }
@@ -728,7 +728,7 @@ public class CreditTransferTransactionInformation10 {
      */
     public List<RemittanceLocation2> getRltdRmtInf() {
         if (rltdRmtInf == null) {
-            rltdRmtInf = new ArrayList<RemittanceLocation2>();
+            rltdRmtInf = new ArrayList<>();
         }
         return this.rltdRmtInf;
     }

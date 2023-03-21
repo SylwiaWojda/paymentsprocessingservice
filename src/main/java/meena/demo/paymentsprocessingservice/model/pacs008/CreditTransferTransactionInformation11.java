@@ -520,7 +520,7 @@ public class CreditTransferTransactionInformation11 {
      */
     public List<ChargesInformation5> getChrgsInf() {
         if (chrgsInf == null) {
-            chrgsInf = new ArrayList<ChargesInformation5>();
+            chrgsInf = new ArrayList<>();
         }
         return this.chrgsInf;
     }
@@ -1053,7 +1053,7 @@ public class CreditTransferTransactionInformation11 {
      */
     public List<InstructionForCreditorAgent1> getInstrForCdtrAgt() {
         if (instrForCdtrAgt == null) {
-            instrForCdtrAgt = new ArrayList<InstructionForCreditorAgent1>();
+            instrForCdtrAgt = new ArrayList<>();
         }
         return this.instrForCdtrAgt;
     }
@@ -1082,7 +1082,7 @@ public class CreditTransferTransactionInformation11 {
      */
     public List<InstructionForNextAgent1> getInstrForNxtAgt() {
         if (instrForNxtAgt == null) {
-            instrForNxtAgt = new ArrayList<InstructionForNextAgent1>();
+            instrForNxtAgt = new ArrayList<>();
         }
         return this.instrForNxtAgt;
     }
@@ -1135,7 +1135,7 @@ public class CreditTransferTransactionInformation11 {
      */
     public List<RegulatoryReporting3> getRgltryRptg() {
         if (rgltryRptg == null) {
-            rgltryRptg = new ArrayList<RegulatoryReporting3>();
+            rgltryRptg = new ArrayList<>();
         }
         return this.rgltryRptg;
     }
@@ -1164,7 +1164,7 @@ public class CreditTransferTransactionInformation11 {
      */
     public List<RemittanceLocation2> getRltdRmtInf() {
         if (rltdRmtInf == null) {
-            rltdRmtInf = new ArrayList<RemittanceLocation2>();
+            rltdRmtInf = new ArrayList<>();
         }
         return this.rltdRmtInf;
     }

@@ -88,7 +88,7 @@ public class StructuredRemittanceInformation7 {
      */
     public List<ReferredDocumentInformation3> getRfrdDocInf() {
         if (rfrdDocInf == null) {
-            rfrdDocInf = new ArrayList<ReferredDocumentInformation3>();
+            rfrdDocInf = new ArrayList<>();
         }
         return this.rfrdDocInf;
     }
@@ -213,7 +213,7 @@ public class StructuredRemittanceInformation7 {
      */
     public List<String> getAddtlRmtInf() {
         if (addtlRmtInf == null) {
-            addtlRmtInf = new ArrayList<String>();
+            addtlRmtInf = new ArrayList<>();
         }
         return this.addtlRmtInf;
     }

@@ -126,7 +126,7 @@ public class RegulatoryReporting3 {
      */
     public List<StructuredRegulatoryReporting3> getDtls() {
         if (dtls == null) {
-            dtls = new ArrayList<StructuredRegulatoryReporting3>();
+            dtls = new ArrayList<>();
         }
         return this.dtls;
     }

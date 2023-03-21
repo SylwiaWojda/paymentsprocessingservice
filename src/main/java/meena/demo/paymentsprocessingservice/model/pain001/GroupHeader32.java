@@ -144,7 +144,7 @@ public class GroupHeader32 {
      */
     public List<Authorisation1Choice> getAuthstn() {
         if (authstn == null) {
-            authstn = new ArrayList<Authorisation1Choice>();
+            authstn = new ArrayList<>();
         }
         return this.authstn;
     }

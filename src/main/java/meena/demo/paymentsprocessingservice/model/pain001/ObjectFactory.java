@@ -31,13 +31,14 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _Document_QNAME = new QName("urn:iso:std:iso:20022:tech:xsd:pain.001.001.03", "Document");
+    private static final QName _Document_QNAME = new QName("urn:iso:std:iso:20022:tech:xsd:pain.001.001.03", "Document");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: meena.demo.paymentsprocessingservice.model.pain001
      * 
      */
     public ObjectFactory() {
+        // Do Nothing.
     }
 
     /**
@@ -574,7 +575,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "urn:iso:std:iso:20022:tech:xsd:pain.001.001.03", name = "Document")
     public JAXBElement<PAIN001Document> createDocument(PAIN001Document value) {
-        return new JAXBElement<PAIN001Document>(_Document_QNAME, PAIN001Document.class, null, value);
+        return new JAXBElement<>(_Document_QNAME, PAIN001Document.class, null, value);
     }
 
 }

@@ -9,6 +9,7 @@
 package meena.demo.paymentsprocessingservice.model.pain001;
 
 import lombok.*;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.xml.bind.annotation.*;
 
@@ -42,6 +43,7 @@ import javax.xml.bind.annotation.*;
 @XmlType(name = "Document", propOrder = {
     "cstmrCdtTrfInitn"
 })
+@Document("PAIN001Document")
 public class PAIN001Document {
 
     @XmlElement(name = "CstmrCdtTrfInitn", required = true)

@@ -523,7 +523,7 @@ public class PaymentInstructionInformation3 {
      */
     public List<CreditTransferTransactionInformation10> getCdtTrfTxInf() {
         if (cdtTrfTxInf == null) {
-            cdtTrfTxInf = new ArrayList<CreditTransferTransactionInformation10>();
+            cdtTrfTxInf = new ArrayList<>();
         }
         return this.cdtTrfTxInf;
     }

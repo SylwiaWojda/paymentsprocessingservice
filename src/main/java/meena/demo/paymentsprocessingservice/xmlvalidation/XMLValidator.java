@@ -1,13 +1,11 @@
-package meena.demo.paymentsprocessingservice.XMLValidation;
+package meena.demo.paymentsprocessingservice.xmlvalidation;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
-
 import javax.xml.XMLConstants;
 import javax.xml.transform.Source;
 import javax.xml.transform.stream.StreamSource;
@@ -15,9 +13,7 @@ import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
 import java.io.File;
-import java.io.IOException;
 import java.io.StringReader;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,34 +22,38 @@ public class XMLValidator {
 
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    private Validator initValidator(String xsdPath) throws SAXException, URISyntaxException {
+    private Validator initValidator(String xsdPath) throws SAXException {
         SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+        factory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+        factory.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+        factory.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
         Source schemaFile = new StreamSource(getFile(xsdPath));
         Schema schema = factory.newSchema(schemaFile);
         return schema.newValidator();
     }
 
-    private File getFile(String xsdPath) throws URISyntaxException {
+    private File getFile(String xsdPath) {
         return new File("D:\\XSD\\" + xsdPath);
     }
 
-    public boolean isValid(String xsdPath, String xmlPath) throws IOException, SAXException, URISyntaxException {
+    public boolean isValid(String xsdPath, String xmlPath) throws SAXException {
         Validator validator = initValidator(xsdPath);
-        List<SAXParseException> exceptions = new ArrayList<SAXParseException>();
+        List<SAXParseException> exceptions = new ArrayList<>();
         try {
             validator.setErrorHandler(new ErrorHandler() {
+
                 @Override
-                public void warning(SAXParseException exception) throws SAXException {
+                public void warning(SAXParseException exception)  {
                     exceptions.add(exception);
                 }
 
                 @Override
-                public void error(SAXParseException exception) throws SAXException {
+                public void error(SAXParseException exception)  {
                     exceptions.add(exception);
                 }
 
                 @Override
-                public void fatalError(SAXParseException exception) throws SAXException {
+                public void fatalError(SAXParseException exception) {
                     exceptions.add(exception);
                 }
             });
@@ -63,12 +63,8 @@ public class XMLValidator {
                 return false;
             }
             return true;
-        } catch (SAXException e) {
-            logger.info("XML Validation Failed ::: " + e.toString());
-            return false;
-        }
-        catch (Exception e){
-            logger.info("XML Validation Failed ::: ", e);
+        } catch (Exception e) {
+            logger.info("XML Validation Failed ::: " , e);
             return false;
         }
     }

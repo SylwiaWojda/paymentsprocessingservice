@@ -96,7 +96,7 @@ public class FIToFICustomerCreditTransferV02 {
      */
     public List<CreditTransferTransactionInformation11> getCdtTrfTxInf() {
         if (cdtTrfTxInf == null) {
-            cdtTrfTxInf = new ArrayList<CreditTransferTransactionInformation11>();
+            cdtTrfTxInf = new ArrayList<>();
         }
         return this.cdtTrfTxInf;
     }

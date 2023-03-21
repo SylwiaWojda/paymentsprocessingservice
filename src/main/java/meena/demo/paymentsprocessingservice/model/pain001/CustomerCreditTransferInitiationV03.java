@@ -96,7 +96,7 @@ public class CustomerCreditTransferInitiationV03 {
      */
     public List<PaymentInstructionInformation3> getPmtInf() {
         if (pmtInf == null) {
-            pmtInf = new ArrayList<PaymentInstructionInformation3>();
+            pmtInf = new ArrayList<>();
         }
         return this.pmtInf;
     }

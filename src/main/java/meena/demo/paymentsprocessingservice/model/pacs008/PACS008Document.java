@@ -9,6 +9,7 @@
 package meena.demo.paymentsprocessingservice.model.pacs008;
 
 import lombok.*;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.xml.bind.annotation.*;
 
@@ -42,6 +43,7 @@ import javax.xml.bind.annotation.*;
     "fiToFICstmrCdtTrf"
 })
 @XmlRootElement(name = "Document")
+@Document("PACS008Document")
 public class PACS008Document {
 
     @XmlElement(name = "FIToFICstmrCdtTrf", required = true)

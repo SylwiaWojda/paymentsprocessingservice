@@ -211,7 +211,7 @@ public class StructuredRegulatoryReporting3 {
      */
     public List<String> getInf() {
         if (inf == null) {
-            inf = new ArrayList<String>();
+            inf = new ArrayList<>();
         }
         return this.inf;
     }

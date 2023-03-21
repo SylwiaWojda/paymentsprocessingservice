@@ -72,7 +72,7 @@ public class RemittanceInformation5 {
      */
     public List<String> getUstrd() {
         if (ustrd == null) {
-            ustrd = new ArrayList<String>();
+            ustrd = new ArrayList<>();
         }
         return this.ustrd;
     }
@@ -101,7 +101,7 @@ public class RemittanceInformation5 {
      */
     public List<StructuredRemittanceInformation7> getStrd() {
         if (strd == null) {
-            strd = new ArrayList<StructuredRemittanceInformation7>();
+            strd = new ArrayList<>();
         }
         return this.strd;
     }
