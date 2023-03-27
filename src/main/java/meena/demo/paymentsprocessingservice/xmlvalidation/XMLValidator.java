@@ -33,7 +33,9 @@ public class XMLValidator {
     }
 
     private File getFile(String xsdPath) {
-        return new File("D:\\XSD\\" + xsdPath);
+        ///Users/iGD-Dev1/Downloads/Twitter4J-main/paymentsprocessingservice/src/main/resources/pain.001.001.03.xsd
+        return new File("/Users/iGD-Dev1/Downloads/"
+                + xsdPath);
     }
 
     public boolean isValid(String xsdPath, String xmlPath) throws SAXException {
