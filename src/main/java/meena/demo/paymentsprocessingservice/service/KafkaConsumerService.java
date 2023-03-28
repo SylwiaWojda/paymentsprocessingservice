@@ -56,7 +56,7 @@ public class KafkaConsumerService {
                 // PAIN001 XML to PAIN001 POJO conversion
                 PAIN001Document pain001pojo = xmlUtilService.convertXMLToPOJO(consumerRecord.value());
                 //Write pain001 xml to mongoDB
-                paymentsProcessingServiceRepository.insert(pain001pojo);
+                //paymentsProcessingServiceRepository.insert(pain001pojo);
                 logger.logStr("PAIN001 POJO :::: "+ mapper.writeValueAsString(pain001pojo));
                 // PAIN001 POJO to PACS008 POJO Mapper
                 PACS008Document pacs008pojo = PAIN001ToPACS008Mapper.mapper.pain001ToPacs008(pain001pojo);
@@ -68,7 +68,7 @@ public class KafkaConsumerService {
                 boolean pacs008XMLValidatorValid = xmlValidator.isValid("pacs.008.001.02.xsd" , pacs008XML);
                 logger.logStr("Generated PACS008 XML valid ?   " + pacs008XMLValidatorValid);
                 //Write pacs.008 xml to mongoDB
-                paymentsProcessingServiceRepo.insert(pacs008pojo);
+                //paymentsProcessingServiceRepo.insert(pacs008pojo);
                 //Write PAIN001 and PACS008 messages to Mongo DB
             }
         }
