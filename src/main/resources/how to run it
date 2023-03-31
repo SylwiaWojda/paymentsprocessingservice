@@ -187,3 +187,11 @@ raw
 </Document>
 
 send
+
+Plan:
+Start your analysis work first.
+Create a card for analysing ISO20022 message standard.
+Then, create an excel sheet with pacs.008 xml to pacs.002 xml mapping sheet.
+Then,start the coding work by sending the pacs.008 xml message which I have created to the next microservice you are going to create via kafka topic.
+Then, in the next microservice you can receive the pacs.008 xml message
+and convert it to pacs.002 xml message.
